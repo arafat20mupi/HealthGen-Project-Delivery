@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthGen Project Delivery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="https://res.cloudinary.com/de4wnwrna/image/upload/v1765302082/IMG-20250730-WA0023_lcd6xa.jpg" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            color: var(--accent);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a.active {
+            color: var(--primary);
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                        url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 0;
+            border-radius: 0 0 30px 30px;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+        
+        .hero-text p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating-icon {
+            position: absolute;
+            background: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .icon-1 {
+            top: -20px;
+            right: -20px;
+        }
+        
+        .icon-2 {
+            bottom: 40px;
+            left: -20px;
+        }
+        
+        /* Documentation Section */
+        .documentation {
+            padding: 6rem 0;
+            background-color: var(--light);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .delivery-info {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px var(--shadow);
+            margin-bottom: 3rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .info-content h4 {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-bottom: 0.3rem;
+        }
+        
+        .info-content p {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tech-stack table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .tech-stack th, .tech-stack td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .tech-stack th {
+            background-color: var(--light);
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .folder-structure {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            line-height: 1.8;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        
+        .delivery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .delivery-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            background-color: var(--light);
+        }
+        
+        .delivery-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+        
+        .steps {
+            counter-reset: step-counter;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .step:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            background-color: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .support-card {
+            background: var(--gradient);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+        
+        .support-period {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 10px 20px var(--shadow);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .tab-btn {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .hero {
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="https://res.cloudinary.com/de4wnwrna/image/upload/v1765302082/IMG-20250730-WA0023_lcd6xa.jpg" alt="HealthGen Logo" style="
+                         width: 120px;
+                         height: 40px;
+                         border-radius: 50%;
+                         object-fit: cover;
+                         ">
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="#home" class="active">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#documentation">Documentation</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h3><i class="fas fa-star"></i> Health comes first</h3>
+                    <h1>HealthGen Project Delivery: <span>Unmatched Excellence</span></h1>
+                    <p>
+                        No one can deliver a better health app project than this. HealthGen sets a new standard for healthcare solutions with its robust features, seamless user experience, and future-ready architecture. Explore the highlights below and see why HealthGen is the top choice for modern health assistance.
+                    </p>
+                    <ul style="margin-bottom: 2rem; color: var(--gray); font-size: 1.05rem; list-style: disc inside;">
+                        <li>Feature-rich modules: Symptom assessment, medicine reminders, health tips, and more</li>
+                        <li>Clean, scalable, and maintainable codebase</li>
+                        <li>Modern UI/UX for effortless navigation</li>
+                        <li>Ready for rapid scaling and new features</li>
+                        <li>Comprehensive documentation and ongoing support</li>
+                    </ul>
+                    <a href="#documentation" class="btn-primary">See Project Details</a>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10k+</div>
+                            <div class="stat-label">Active Users</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">70k+</div>
+                            <div class="stat-label">App Views</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">Expert Doctors</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Doctor consultation">
+                    <div class="floating-icon icon-1">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="floating-icon icon-2">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Documentation Section -->
+    <section class="documentation" id="documentation">
+        <div class="container">
+            <div class="section-header">
+                <h2>HealthGen Project Delivery</h2>
+                <p>Complete documentation for the Health Assistance Mobile Application delivered by CodeCraftor</p>
+            </div>
+            
+            <div class="delivery-info">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Project Name</h4>
+                            <p>HealthGen – Health Assistance Ai Mobile Application</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Client Delivery Date</h4>
+                            <p>09 December 2025</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Delivered By</h4>
+                            <p>CodeCraftor (Arafat Islam)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tabs for Documentation -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="tech-stack">Tech Stack</button>
+                <button class="tab-btn" data-tab="structure">Structure</button>
+                <button class="tab-btn" data-tab="delivery">Delivery Items</button>
+                <button class="tab-btn" data-tab="build">Build Instructions</button>
+                <button class="tab-btn" data-tab="support">Support</button>
+            </div>
+            
+            <!-- Tab Contents -->
+            <div id="overview" class="tab-content active">
+                <h3>Project Overview</h3>
+                <p>HealthGen is a cross-platform mobile application built with Flutter. It provides users with personalized health-related services, including health tips, symptom assessment, medicine reminders, medical service locators, user management, and notification handling.</p>
+                <p>The application is structured using a robust and scalable architecture based on feature-wise module separation, provider/state management, and clean folder organization.</p>
+            </div>
+            
+            <div id="tech-stack" class="tab-content">
+                <h3>Technology Stack</h3>
+                <div class="tech-stack">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Technology</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Frontend (Mobile App)</td>
+                                <td>Flutter (Dart)</td>
+                            </tr>
+                            <tr>
+                                <td>Backend / API</td>
+                                <td>Node.js</td>
+                            </tr>
+                            <tr>
+                                <td>Database</td>
+                                <td>Local storage, SharedPreferences, MongoDB server</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Push Notifications</td>
+                                <td>Onesignal Cloud Messaging</td>
+                            </tr>
+                            <tr>
+                                <td>App Icons & Branding</td>
+                                <td>Flutter Native Launcher / Custom Assets</td>
+                            </tr>
+                            <tr>
+                                <td>Version Control</td>
+                                <td>Git</td>
+                            </tr>
+                            <tr>
+                                <td>Build Platforms</td>
+                                <td>Android & iOS</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="structure" class="tab-content">
+                <h3>Project Folder Structure</h3>
+                <p><strong>Root Structure</strong></p>
+                <div class="folder-structure">
+                    HEALTHGENFLUTTER/<br>
+                    │<br>
+                    ├── android/<br>
+                    ├── ios/<br>
+                    ├── lib/<br>
+                    ├── assets/<br>
+                    ├── AppIcons/<br>
+                    ├── build/<br>
+                    ├── linux/<br>
+                    ├── macos/<br>
+                    ├── web/<br>
+                    ├── windows/<br>
+                    ├── pubspec.yaml<br>
+                    └── firebase.json
+                </div>
+                
+                <p><strong>Main Code Structure (lib/)</strong></p>
+                <div class="folder-structure">
+                    lib/core/<br>
+                    │── app_theme/<br>
+                    │── core_providers/<br>
+                    │── network/<br>
+                    │── routes/<br>
+                    │── services/<br>
+                    │── storage/<br>
+                    └── utils/<br><br>
+                    
+                    lib/features/<br>
+                    │<br>
+                    ├── auth/<br>
+                    ├── dashboard/<br>
+                    │     ├── data/<br>
+                    │     ├── model/<br>
+                    │     ├── presentation/<br>
+                    │     └── widget/<br>
+                    ├── health_tips/<br>
+                    ├── medicine_reminder/<br>
+                    ├── nearby_medical_services/<br>
+                    ├── notification/<br>
+                    ├── settings/<br>
+                    ├── shared_features/<br>
+                    ├── symptom_assessment/<br>
+                    ├── symptom_diary/<br>
+                    └── user_profile/<br><br>
+                    
+                    lib/gen/<br>
+                    │── assets.gen.dart<br>
+                    │── l10n/<br>
+                    └── firebase_options.dart<br><br>
+                    
+                    lib/main.dart
+                </div>
+            </div>
+            
+            <div id="delivery" class="tab-content">
+                <h3>Delivery Items Included</h3>
+                <div class="delivery-grid">
+                    <div class="delivery-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Complete Flutter source code</div>
+                    </div>
+                    <div class="delivery-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Organized feature-based architecture</div>
+                    </div>
+                    <div class="delivery-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Firebase configuration included</div>
+                    </div>
+                    <div class="delivery-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>App icons included (Android & iOS)</div>
+                    </div>
+                    <div class="delivery-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Updated pubspec.yaml with all dependencies</div>
+                    </div>
+                    <div class="delivery-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Login, Dashboard, Reminder, Tips, Assessment, Notification, and Profile modules</div>
+                    </div>
+                    <div class="delivery-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Clean routing system and reusable components</div>
+                    </div>
+                    <div class="delivery-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Tested Android Release APK</div>
+                    </div>
+                    <div class="delivery-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Ready for further scaling and new feature additions</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="build" class="tab-content">
+                <h3>Build Instructions</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div>
+                            <h4>Step 1 – Install Packages</h4>
+                            <div class="folder-structure">flutter pub get</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div>
+                            <h4>Step 2 – Clean Build</h4>
+                            <div class="folder-structure">flutter clean<br>flutter pub get</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div>
+                            <h4>Step 3 – Run App</h4>
+                            <div class="folder-structure">flutter run</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div>
+                            <h4>Step 4 – Generate Release Build</h4>
+                            <div class="folder-structure">flutter build apk --release</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="support" class="tab-content">
+                <h3>Support & Maintenance</h3>
+                <p>From the delivery date (08 Dec 2025) you will receive:</p>
+                
+                <div class="support-card">
+                    <h3 style="color: white;">12 Months of Support</h3>
+                    
+                    <div class="support-period">
+                        <div>
+                            <h4 style="color: white;">Included Support Services</h4>
+                            <ul style="color: rgba(255,255,255,0.9);">
+                                <li>Weekly issue resolution</li>
+                                <li>8 APK deliveries (one per week)</li>
+                                <li>Bug fixes</li>
+                                <li>Minor UI/UX adjustments</li>
+                                <li>API integration modifications (within scope)</li>
+                            </ul>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: white;">12 Months</div>
+                            <div style="color: rgba(255,255,255,0.9);">Full Support</div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 1.5rem; color: rgba(255,255,255,0.9);"><strong>For any issue, please submit directly through Whatsapp.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Health Gen</h3>
+                    <p>Your health is our priority. Find the best doctors and book appointments online.</p>
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#doctors">Find Doctors</a></li>
+                        <li><a href="#documentation">Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>Dhaka, Bangladesh</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i>01722172906</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> info.codecraftor.dev</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Project Details</h3>
+                    <ul>
+                        <li><strong>Project:</strong> HealthGen Mobile App</li>
+                        <li><strong>Delivered By:</strong> CodeCraftor</li>
+                        <li><strong>Delivery Date:</strong> 09 Dec 2025</li>
+                        <li><strong>Support Until:</strong> 09 Dec 2026</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Health Gen. All rights reserved. | HealthGen Project delivered by CodeCraftor (Arafat Islam)</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('show') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Tab Switching Functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
